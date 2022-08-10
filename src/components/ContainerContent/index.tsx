@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { MouseEvent, DragEvent } from 'react'
 import styled from '@emotion/styled'
 import NavBar from '@/components/NavBar'
 
 export default () => {
+  const handleDrop = (event: DragEvent<HTMLElement>) => {
+    const index = Number(event.dataTransfer.getData('index'))
+    console.log(index)
+  }
+  const handleDragOver = (event: DragEvent<HTMLElement>) => {
+    console.log('移动', event)
+    event.preventDefault()
+  }
+  const editContextmenu = (e: MouseEvent<HTMLElement>) => {
+    console.log('右击', e)
+    e.preventDefault()
+  }
   return (
     <Content>
       <NavBar title={'测试'} />
-      <Main></Main>
+      <Main onDrop={handleDrop} onDragOver={handleDragOver} onContextMenu={editContextmenu}></Main>
     </Content>
   )
 }
