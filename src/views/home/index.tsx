@@ -5,7 +5,7 @@ import ContainerContent from '@/components/ContainerContent'
 import ContainerConfig from '@/components/ContainerConfig'
 import ContainerWarehouse from '@/components/ContainerWarehouse'
 
-export default () => {
+const Home = () => {
   return (
     <Container>
       <ContainerHeader />
@@ -17,6 +17,7 @@ export default () => {
     </Container>
   )
 }
+export default Home
 
 const Container = styled.div`
   width: 100%;

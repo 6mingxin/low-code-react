@@ -2,7 +2,7 @@ import React, { MouseEvent, DragEvent } from 'react'
 import styled from '@emotion/styled'
 import NavBar from '@/components/NavBar'
 
-export default () => {
+const ContainerContent = () => {
   const handleDrop = (event: DragEvent<HTMLElement>) => {
     const index = Number(event.dataTransfer.getData('index'))
     console.log(index)
@@ -22,6 +22,7 @@ export default () => {
     </Content>
   )
 }
+export default ContainerContent
 
 const Content = styled.div`
   width: 375px;
