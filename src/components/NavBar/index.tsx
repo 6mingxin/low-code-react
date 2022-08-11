@@ -5,7 +5,6 @@ type Props = {
   title: string
 }
 export default (props: Props) => {
-  console.log(props)
   return (
     <div>
       <div style={{ height: '44px', backgroundColor: '#fff' }} />

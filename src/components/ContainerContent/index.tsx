@@ -1,28 +1,34 @@
 import React, { MouseEvent, DragEvent } from 'react'
 import styled from '@emotion/styled'
 import NavBar from '@/components/NavBar'
+import { useDispatch, useSelector } from 'react-redux'
+import { useChangeComponent } from '@/store/components'
+import components from '@/common/utils/components'
+import { stoer } from '@/store'
 
-const ContainerContent = () => {
+export default () => {
+  const dispatch = useDispatch()
+  const store = useSelector(state => state) as stoer
+  const { addComponent } = useChangeComponent()
+
   const handleDrop = (event: DragEvent<HTMLElement>) => {
-    const index = Number(event.dataTransfer.getData('index'))
-    console.log(index)
-  }
-  const handleDragOver = (event: DragEvent<HTMLElement>) => {
-    console.log('移动', event)
     event.preventDefault()
+    const index = Number(event.dataTransfer.getData('index'))
+    dispatch(addComponent(components[index]))
+    // console.log(store)
+    // dispatch({ type: 'DEL' })
   }
+
   const editContextmenu = (e: MouseEvent<HTMLElement>) => {
-    console.log('右击', e)
     e.preventDefault()
   }
   return (
-    <Content>
+    <Content style={{ zoom: store.zoom }}>
       <NavBar title={'测试'} />
-      <Main onDrop={handleDrop} onDragOver={handleDragOver} onContextMenu={editContextmenu}></Main>
+      <Main onDrop={handleDrop} onDragOver={e => e.preventDefault()} onContextMenu={editContextmenu}></Main>
     </Content>
   )
 }
-export default ContainerContent
 
 const Content = styled.div`
   width: 375px;

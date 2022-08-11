@@ -1,5 +1,5 @@
 // 编辑器左侧组件列表
-const list = [
+const list: componentsType[] = [
   {
     component: 'TyButton',
     label: '按钮',
