@@ -26,7 +26,7 @@ export default () => {
 
 const Warehouse = styled.div`
   width: 400px;
-  min-height: calc(100vh - 60px);
+  height: 100%;
   background-color: #fff;
   position: relative;
   z-index: 9;

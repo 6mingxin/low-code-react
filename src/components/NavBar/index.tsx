@@ -21,4 +21,5 @@ const NavbarContent = styled.div`
   justify-content: center;
   font-size: 18px;
   color: #333;
+  border-bottom: 1px solid #f4f4f4;
 `

@@ -21,10 +21,12 @@ export default Home
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #f4f4f4;
 `
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: calc(100% - 60px);
 `

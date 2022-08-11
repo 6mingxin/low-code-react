@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useChangeComponent } from '@/store/components'
 import components from '@/common/utils/components'
 import { stoer } from '@/store'
+import { guid } from '@/common/utils'
 
 export default () => {
   const dispatch = useDispatch()
@@ -12,11 +13,24 @@ export default () => {
   const { addComponent } = useChangeComponent()
 
   const handleDrop = (event: DragEvent<HTMLElement>) => {
+    console.log(event)
     event.preventDefault()
+    event.stopPropagation()
     const index = Number(event.dataTransfer.getData('index'))
-    dispatch(addComponent(components[index]))
-    // console.log(store)
-    // dispatch({ type: 'DEL' })
+    const temporary = JSON.parse(JSON.stringify(components[index]))
+
+    temporary.setting.style.top = event.nativeEvent.offsetY
+    temporary.setting.style.left = event.nativeEvent.offsetX
+    temporary.setting.props.uuid = guid(8)
+
+    dispatch(addComponent(temporary))
+    console.log(store)
+    dispatch({ type: 'DEL' })
+  }
+  const HandleDragOver = (event: DragEvent<HTMLElement>) => {
+    console.log(event)
+    event.preventDefault()
+    event.stopPropagation()
   }
 
   const editContextmenu = (e: MouseEvent<HTMLElement>) => {
@@ -25,7 +39,7 @@ export default () => {
   return (
     <Content style={{ zoom: store.zoom }}>
       <NavBar title={'测试'} />
-      <Main onDrop={handleDrop} onDragOver={e => e.preventDefault()} onContextMenu={editContextmenu}></Main>
+      <Main onDrop={handleDrop} onDragOver={HandleDragOver} onContextMenu={editContextmenu}></Main>
     </Content>
   )
 }
@@ -45,4 +59,5 @@ const Main = styled.div`
   height: calc(100% - 88px);
   width: 100%;
   overflow-y: scroll;
+  position: relative;
 `
