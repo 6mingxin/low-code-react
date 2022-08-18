@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { componentsType } from '@/type'
 
 type actionType = {
   type: 'CHANGE'

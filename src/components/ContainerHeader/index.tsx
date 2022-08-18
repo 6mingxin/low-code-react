@@ -1,24 +1,22 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { useDispatch, useSelector } from 'react-redux'
-import { stoer } from '@/store'
+import { storeType } from '@/store'
 import { zoomType } from '@/store/zoom'
 import { Dispatch } from 'redux'
 
 export default () => {
-  const store = useSelector(state => state) as stoer
+  const store = useSelector(state => state) as storeType
   const dispatch = useDispatch<Dispatch<zoomType>>()
-  const onReduce = () => dispatch({ type: 'REDUCE' })
-  const onIncrease = () => dispatch({ type: 'INCREASE' })
 
   return (
     <Header>
       <HeaderItem className="iconfont icon-tijiao-shangchuan-02" />
       <HeaderItem className="iconfont icon-cz-blcx" />
       <HeaderZoom>
-        <ZoomButton className="iconfont icon-jian" onClick={onReduce} />
+        <ZoomButton className="iconfont icon-jian" onClick={() => dispatch({ type: 'REDUCE' })} />
         <ZoomText>{store.zoom * 100}%</ZoomText>
-        <ZoomButton className="iconfont icon-jia" onClick={onIncrease} />
+        <ZoomButton className="iconfont icon-jia" onClick={() => dispatch({ type: 'INCREASE' })} />
       </HeaderZoom>
     </Header>
   )

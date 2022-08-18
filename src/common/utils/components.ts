@@ -1,4 +1,7 @@
 // 编辑器左侧组件列表
+import { componentsType, SettingType } from '@/type'
+import { ButtonType } from 'react-vant'
+import { ImageProps } from 'react-vant'
 const list: componentsType[] = [
   {
     component: 'TyButton',
@@ -16,13 +19,13 @@ const list: componentsType[] = [
         width: '100%',
         height: '',
         borderRadius: '0',
-        position: 'absolute',
+        position: 'static',
         transform: 'none',
         top: '0',
         left: '0',
         zIndex: '1',
       },
-    },
+    } as SettingType<ButtonType>,
   },
   {
     component: 'TyImage',
@@ -32,7 +35,7 @@ const list: componentsType[] = [
     setting: {
       props: {
         value: [], //多张图片
-        fit: 'widthFix',
+        fit: 'fill',
         sticky: false,
         uuid: '',
         onGoto: '', //点击跳转的路径，目前只有navigateTo的跳转
@@ -41,13 +44,13 @@ const list: componentsType[] = [
         width: '100%',
         height: '',
         borderRadius: '0',
-        position: 'absolute',
+        position: 'static',
         transform: 'none',
         top: '0',
         left: '0',
         zIndex: '1',
       },
-    },
+    } as SettingType<ImageProps>,
   },
 ]
 

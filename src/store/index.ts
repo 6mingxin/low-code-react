@@ -2,8 +2,9 @@
 import components from '@/store/components'
 import zoom from '@/store/zoom'
 import { combineReducers } from 'redux'
+import { componentsType } from '@/type'
 
-export interface stoer {
+export interface storeType {
   components: componentsType[]
   zoom: number
 }

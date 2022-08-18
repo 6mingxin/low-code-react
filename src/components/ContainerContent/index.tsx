@@ -4,12 +4,12 @@ import NavBar from '@/components/NavBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { useChangeComponent } from '@/store/components'
 import components from '@/common/utils/components'
-import { stoer } from '@/store'
+import { storeType } from '@/store'
 import { guid } from '@/common/utils'
 
 export default () => {
   const dispatch = useDispatch()
-  const store = useSelector(state => state) as stoer
+  const store = useSelector(state => state) as storeType
   const { addComponent } = useChangeComponent()
 
   const handleDrop = (event: DragEvent<HTMLElement>) => {
