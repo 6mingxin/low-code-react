@@ -2,18 +2,21 @@
 import { componentsType, SettingType } from '@/type'
 import { ButtonType } from 'react-vant'
 import { ImageProps } from 'react-vant'
+import { ButtonProps } from 'react-vant/es/button/PropsType'
 const list: componentsType[] = [
   {
     component: 'TyButton',
     label: '按钮',
     icon: 'icon-24gf-stopCircle',
     id: 2,
+    status: false,
     setting: {
-      props: {
+      attr: {
         value: '',
         sticky: false,
         uuid: '',
         onGoto: '', //点击跳转的路径，目前只有navigateTo的跳转
+        type: 'primary',
       },
       style: {
         width: '100%',
@@ -25,17 +28,17 @@ const list: componentsType[] = [
         left: '0',
         zIndex: '1',
       },
-    } as SettingType<ButtonType>,
+    } as SettingType<ButtonProps>,
   },
   {
     component: 'TyImage',
     label: '图片',
     icon: 'icon-tupiantianchong',
     id: 3,
+    status: false,
     setting: {
-      props: {
+      attr: {
         value: [], //多张图片
-        fit: 'fill',
         sticky: false,
         uuid: '',
         onGoto: '', //点击跳转的路径，目前只有navigateTo的跳转

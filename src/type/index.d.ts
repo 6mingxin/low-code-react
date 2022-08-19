@@ -5,11 +5,12 @@ interface componentsType {
   icon: string
   label: string
   id: number
+  status: boolean
   setting: SettingType
 }
 interface SettingType<T> {
   style: StyleType
-  props: PropsType & T
+  attr: PropsType & T
 }
 interface StyleType {
   transform?: string
@@ -26,5 +27,4 @@ interface PropsType {
   onGoto: string
   value: string | []
   uuid: string
-  fit?: ImageFit
 }

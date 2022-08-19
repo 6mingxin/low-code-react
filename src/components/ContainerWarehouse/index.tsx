@@ -1,14 +1,35 @@
 import React, { DragEvent } from 'react'
 import styled from '@emotion/styled'
 import components from '@/common/utils/components'
+import { componentsType } from '@/type'
+import { selectComActionType } from '@/store/selectCom'
+import { useDispatch, useSelector } from 'react-redux'
+import { storeType } from '@/store'
+import { guid } from '@/common/utils'
 
 export default () => {
+  const dispatch = useDispatch()
+  const store = useSelector(state => state) as storeType
   const handleDragStart = (event: DragEvent<HTMLDivElement>) => {
     if (event !== null && event.target instanceof HTMLElement) {
       // console.log(event.target.dataset.index)
-      event.dataTransfer.setData('index', event.target.dataset.index || '')
+      // event.dataTransfer.setData('index', event.target.dataset.index || '')
+      const index = Number(event.target.dataset.index)
+      console.log(index)
+      const temporary = JSON.parse(JSON.stringify(components[index]))
+
+      temporary.setting.attr.uuid = guid(8)
+
+      dispatch<selectComActionType>({ type: 'SELECT_CHANGE', component: temporary, index: 0 })
     }
   }
+  // const handlerSelectCom = (uuid: string, coms: componentsType[]) => {
+  //   coms.forEach((e, i) => {
+  //     if (e.setting.attr.uuid === uuid) {
+  //       dispatch<selectComActionType>({ type: 'SELECT_CHANGE', component: e, index: i })
+  //     }
+  //   })
+  // }
   const dragEnd = (event: DragEvent<HTMLDivElement>) => {
     // console.log(event)
   }
@@ -48,6 +69,7 @@ const WarehouseItem = styled.div`
   flex-direction: column;
   margin-right: 12px;
   margin-bottom: 12px;
+  cursor: pointer;
 `
 const WarehouseItemIcon = styled.div`
   font-size: 24px;
